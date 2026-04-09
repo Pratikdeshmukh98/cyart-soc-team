@@ -143,6 +143,5 @@ Key Learning:
 
 I understood the importance of minimizing false positives in a SOC environment as they consume analyst time and reduce efficiency I developed the ability to accurately differentiate between real threats and benign activities
 
-## Conclusion
-
+## Conclusion:
 This project helped me understand SOC workflows including alert classification triage investigation and response documentation I gained practical exposure to threat intelligence tools and improved my ability to analyze and respond to security incidents effectively
