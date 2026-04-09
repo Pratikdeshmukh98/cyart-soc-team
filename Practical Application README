@@ -1,0 +1,82 @@
+Title: [Critical] Ransomware Detected on Server-X
+
+Description:
+A ransomware-related file (crypto_locker.exe) was detected on a production server. The file exhibited malicious behavior including encryption activity. 
+The system showed abnormal process execution and potential data compromise.
+
+Indicators of Compromise (IOCs):
+File Name: crypto_locker.exe
+Source IP: 192.168.1.50
+Hash: 44d88612fea8a8f36de82e1278abb02f
+
+Priority: Critical
+
+Status: Open
+
+Assigned To: SOC Analyst
+
+Steps Taken:
+- Isolated affected system from network
+- Identified malicious file and process
+- Collected basic system information
+
+Next Actions:
+- Perform full malware analysis
+- Restore affected systems from backup
+- Monitor network for lateral movement
+
+Escalation Email:
+
+Dear Tier 2 Team,
+
+A critical security alert has been identified on Server-X involving a suspected ransomware infection. The malicious file crypto_locker.exe was detected executing 
+on the system, exhibiting behavior consistent with file encryption and unauthorized process activity.Initial investigation indicates potential compromise, with 
+indicators including the file hash 44d88612fea8a8f36de82e1278abb02f and associated IP activity from 192.168.1.50. The affected system has been isolated from the 
+network to prevent further spread.
+Immediate attention is required to perform detailed malware analysis, assess the extent of impact, and initiate recovery procedures. Continuous monitoring has 
+been enabled to detect any lateral movement or additional suspicious activity.
+
+Please advise on further actions and escalation steps.
+
+Regards,
+SOC Analyst
+
+2. Response Documentation
+
+I created structured response documentation for a simulated phishing incident using Google Docs and Draw.io I focused on building a standardized incident 
+response format aligned with SOC practices
+
+Activities Performed:
+
+I developed an incident response template documented investigation steps with timestamps created a phishing checklist and conducted a post mortem analysis to
+evaluate the effectiveness of the response
+
+Incident Response Template:
+
+I created a structured template based on SANS guidelines which included key sections such as Executive Summary Timeline Impact Analysis Remediation Steps and 
+Lessons Learned This helped in organizing the incident details in a clear and professional manner
+
+Investigation Steps:                             
+  TIMESTAMP                                    ACTION
+2025-08-18 14:00:00	                     Isolated endpoint
+2025-08-18 14:30:00	                     Collected memory dump
+
+I documented all investigation steps with timestamps to maintain traceability and ensure a proper audit trail during the incident response process
+
+Phishing Checklist:
+
+Confirm email headers
+Check link reputation using VirusTotal
+Identify affected users
+
+I created this checklist to standardize phishing investigations and ensure that no critical step is missed during analysis
+
+Post Mortem:
+
+The incident response highlighted the need for faster alert detection and improved communication between teams Implementing better monitoring and predefined
+response procedures can significantly reduce response time and improve overall efficiency
+
+Key Learning:
+
+I understood the importance of structured documentation in incident response and how templates checklists and logs improve consistency efficiency and support 
+future investigations
