@@ -81,11 +81,11 @@ I understood the importance of proper documentation in incident response I learn
 
 **3. Alert Triage Practice**
 
-I performed alert triage using tools such as Wazuh VirusTotal and AlienVault OTX I analyzed simulated alerts to determine their severity validate indicators and identify false positives I focused on understanding how alerts are investigated in a real SOC workflow
+I performed alert triage using tool such as VirusTotal I analyzed simulated alerts to determine their severity validate indicators and identify false positives I focused on understanding how alerts are investigated in a real SOC workflow
 
 Activities Performed:
 
-I monitored alerts in Wazuh and analyzed their details such as source IP event type and frequency I used VirusTotal and AlienVault OTX to validate suspicious indicators I simulated different alert scenarios and practiced classifying them based on priority and legitimacy
+I analyzed simulated alerts based on real world SOC scenarios analyzed their details such as source IP event type and frequency I used VirusTotal and AlienVault OTX to validate suspicious indicators I simulated different alert scenarios and practiced classifying them based on priority and legitimacy
 
 Triage Simulation:
 
