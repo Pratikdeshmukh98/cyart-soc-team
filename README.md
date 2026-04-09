@@ -2,7 +2,7 @@
 
 **1. Alert Priority Levels**
 What I Learned
-Core Concepts:
+Core Concepts: 
 
 I understood how alerts are classified into different priority levels based on impact and urgency I learned that Critical alerts represent immediate threats such as ransomware or active breaches High priority alerts indicate serious risks such as unauthorized administrative access Medium alerts involve suspicious activities that require investigation while Low alerts are mostly informational and do not need immediate action
 
