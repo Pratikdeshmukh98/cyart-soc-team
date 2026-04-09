@@ -1,4 +1,36 @@
+Alert Management Practise:
+I created an alert classification system using Microsoft Excel to organize and prioritize security alerts based on severity type and MITRE ATT&CK mapping The sheet 
+was designed to 
+simulate how alerts are structured and analyzed in a real SOC environment
+
+Purpose:
+
+The purpose of this sheet is to standardize alert handling by mapping different types of security events to their corresponding MITRE ATT&CK techniques This helps 
+in improving alert triage prioritization and understanding attacker behavior
+
+Structure of the Sheet:
+
+The Excel sheet includes key fields such as Alert ID Alert Name Type Source Priority MITRE Tactic MITRE Technique Description and Recommended Action These fields 
+help in categorizing alerts and providing clear response guidance
+
+Implementation:
+
+I added multiple alerts such as phishing brute force malware execution privilege escalation and data exfiltration Each alert was assigned a priority level based on 
+impact and likelihood and mapped to relevant MITRE techniques such as T1566 for phishing and T1059 for command execution
+
+Usage:
+
+This sheet can be used by SOC analysts to quickly identify the severity of alerts understand the attack technique and take appropriate response actions It also
+helps in maintaining consistency in alert handling and improving investigation efficiency
+
+Key Learning:
+
+Through this task I learned how to structure and prioritize alerts how MITRE ATT&CK mapping enhances threat analysis and how standardized classification improves 
+SOC workflow efficiency
 Title: [Critical] Ransomware Detected on Server-X
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+Incident Ticket:
 
 Description:
 A ransomware-related file (crypto_locker.exe) was detected on a production server. The file exhibited malicious behavior including encryption activity. 
@@ -25,6 +57,8 @@ Next Actions:
 - Restore affected systems from backup
 - Monitor network for lateral movement
 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 Escalation Email:
 
 Dear Tier 2 Team,
@@ -41,6 +75,8 @@ Please advise on further actions and escalation steps.
 Regards,
 SOC Analyst
 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 2. Response Documentation
 
 I created structured response documentation for a simulated phishing incident using Google Docs and Draw.io I focused on building a standardized incident 
@@ -56,8 +92,9 @@ Incident Response Template:
 I created a structured template based on SANS guidelines which included key sections such as Executive Summary Timeline Impact Analysis Remediation Steps and 
 Lessons Learned This helped in organizing the incident details in a clear and professional manner
 
-Investigation Steps:                             
-  TIMESTAMP                                    ACTION
+Investigation Steps:      
+
+  TIMESTAMP                                   ACTION
 2025-08-18 14:00:00	                     Isolated endpoint
 2025-08-18 14:30:00	                     Collected memory dump
 
@@ -80,3 +117,132 @@ Key Learning:
 
 I understood the importance of structured documentation in incident response and how templates checklists and logs improve consistency efficiency and support 
 future investigations
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+3. Alert Triage Practice:
+
+
+I performed alert triage using simulated SOC alerts and validated indicators using threat intelligence tools such as VirusTotal and AlienVault OTX I analyzed 
+alerts to determine their severity and identify whether they were true positives or false positives
+
+Activities Performed
+
+I analyzed alert data including source IP event type and frequency I validated suspicious indicators using threat intelligence platforms and classified alerts 
+based on priority and impact I also evaluated whether alerts represented actual threats or benign activity
+
+Triage Simulation:
+
+Alert ID	       Description	       Source     IP	                   Priority	     Status
+002	            Brute-force            SSH	     185.220.101.1	         Medium	      Open
+
+I analyzed a simulated brute force alert where repeated login attempts were observed from a single IP address The behavior indicated automated attack activity
+due to high frequency of failed logins
+
+Threat Intelligence Validation:
+
+The IP address 185.220.101.1 was analyzed using threat intelligence platforms where it showed multiple detections and was associated with suspicious activity
+This confirmed that the alert is likely a true positive
+
+Analysis and Findings:
+
+The repeated login attempts combined with external reputation data indicate a brute force attack scenario The behavior is not consistent with normal user 
+activity
+
+Conclusion:
+
+The alert is classified as a True Positive and represents a potential brute force attack
+
+Key Learning:
+
+I developed practical skills in alert triage including analyzing alert patterns validating indicators using threat intelligence and distinguishing between true
+positives and false positives This improved my ability to make accurate decisions in SOC operations
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+4. Evidence Preservation
+
+I performed evidence preservation for a simulated incident by documenting collected artifacts and maintaining basic chain of custody information I focused on 
+ensuring integrity and traceability of evidence as per standard incident response practices
+
+Activities Performed:
+
+I identified critical evidence such as system memory data and documented its collection details I ensured that the evidence was recorded with relevant metadata
+including collection date analyst name and hash value to maintain integrity
+
+Evidence Collection:
+
+Item	          Description	           Collected By	             Date          	Hash Value
+Memory Dump   	Server-X Dump	          SOC Analyst	           2025-08-18	      SHA256: a1b2c3d4e5f67890abcdef1234567890abcdef1234567890abcdef1234567890
+
+I documented the collected evidence in a structured format including details such as description collection date and hash value This ensures that the evidence 
+remains verifiable and tamper proof
+
+Chain of Custody:
+
+I maintained basic chain of custody by recording who collected the evidence when it was collected and how it was handled This helps ensure that the evidence can 
+be trusted and used for further investigation
+
+Analysis and Importance:
+
+Preserving evidence is critical in incident response as it allows investigators to analyze the attack and understand its impact Proper documentation and hashing
+ensure that the evidence has not been altered
+
+Key Learning:
+
+I learned the importance of evidence integrity and proper documentation in incident response I understood how hashing and chain of custody help maintain trust 
+and reliability of collected artifacts
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+5. Capstone Project: Full Alert-to-Response Cycle
+
+I simulated a complete SOC workflow by creating a realistic attack scenario and performing detection triage analysis and response using structured documentation 
+and threat intelligence tools
+
+Attack Simulation
+
+I simulated a brute force attack scenario where repeated login attempts were observed from a suspicious external IP address This behavior was treated as an 
+unauthorized access attempt targeting a system
+
+Detection and Triage:
+
+Timestamp      	        Source IP	       Alert Description	     MITRE Technique
+2025-08-18 11:00:00	    185.220.101.1	   Brute-force attempt	    T1110
+
+The alert was analyzed based on login patterns and frequency of attempts The behavior indicated automated attack activity
+
+Threat Validation:
+
+The source IP was validated using threat intelligence platforms and showed multiple detections indicating suspicious activity This confirmed the alert as a likely
+true positive
+
+Response:
+
+The affected system was logically isolated to prevent further unauthorized access The suspicious IP address was blocked and monitoring was enabled to detect any 
+further activity
+
+Reporting:
+
+I documented the incident using a structured SANS-style report including executive summary timeline impact analysis remediation steps and lessons learned
+
+Stakeholder Briefing:
+
+A simulated briefing was prepared to communicate the incident to a non technical stakeholder explaining the nature of the attack actions taken and current system 
+status in a simplified manner
+
+Key Learning:
+
+This project helped me understand the complete SOC workflow from detection to response I gained practical experience in analyzing alerts validating threats
+documenting incidents and taking appropriate response actions
+
+Stakeholder Briefing:
+
+A security incident involving multiple unauthorized login attempts was detected on one of the systems The activity originated from an external IP address 
+and indicated a potential brute force attack Immediate action was taken to isolate the affected system and block the suspicious source to prevent further access
+
+No evidence of data loss or system compromise was identified at this stage The situation has been contained and continuous monitoring has been enabled to detect 
+any further suspicious activity
+
+Additional preventive measures such as stronger authentication controls and enhanced monitoring are recommended to reduce the risk of similar incidents in the
+future
