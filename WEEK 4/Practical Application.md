@@ -339,3 +339,12 @@ exposure, and strengthen their cybersecurity posture.
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+**Conclusion:**
+
+This activity demonstrated how security metrics and executive reporting enable a data-driven approach to SOC operations. By analyzing key indicators such as MTTD, 
+MTTR, and false positive rate, I was able to evaluate detection efficiency, response effectiveness, and overall operational performance. The use of dashboards in 
+Elastic Security provided clear visibility into trends, while metric analysis in Google Sheets helped identify performance gaps.
+
+The findings highlighted the need for faster response times and improved alert accuracy, emphasizing the importance of automation and better correlation rules. 
+Executive reporting further ensured that technical insights could be communicated effectively to stakeholders for informed decision-making. Overall, this process 
+reinforced the role of continuous monitoring and improvement in enhancing SOC efficiency and strengthening organizational security posture.
