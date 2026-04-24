@@ -1,0 +1,5 @@
+I conducted a threat hunting exercise focused on detecting unauthorized privilege escalation within the environment. I formed a hypothesis that a standard user 
+account may have gained elevated access and validated it by analyzing authentication logs in Elastic Security. By querying Event ID 4672, I identified a suspicious 
+instance where a non-privileged user was assigned administrative rights, which deviated from expected behavior. I further investigated the endpoint using Velociraptor
+to review running processes and system activity. Additionally, I used AlienVault OTX to correlate potential indicators of compromise. The activity aligns with MITRE 
+ATT&CK T1078, indicating possible misuse of valid accounts requiring further monitoring.
