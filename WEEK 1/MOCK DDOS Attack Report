@@ -1,0 +1,52 @@
+Incident Summary:
+
+On my lab environment, I simulated and analyzed a Distributed Denial of Service (DDoS)–like activity targeting a web service. The objective was to observe abnormal traffic patterns, validate detection mechanisms, and document the response workflow. The activity resulted in a noticeable spike in incoming requests, impacting service responsiveness.
+
+Incident Details
+Date/Time: 2026-02-04T23:01:32.185184+05:30
+Incident Type: DDoS Attack (Simulated)
+Target System: Web server hosted on local/VM environment
+Detection Source: SIEM dashboard / Network monitoring logs
+Severity: High
+
+Detection:
+
+During monitoring, I observed a sudden surge in network traffic directed at the web server. Key indicators included:
+
+High volume of repeated requests within a short time interval
+Multiple requests originating from the same or multiple IPs
+Increased server response time and temporary unavailability
+
+The alert was triggered based on abnormal traffic thresholds configured in the monitoring system.
+
+Analysis:
+
+Upon further investigation:
+
+Logs showed continuous HTTP requests targeting the same endpoint
+Traffic pattern indicated automated or scripted behavior
+No valid user interaction patterns (e.g., no session diversity, repeated identical requests)
+
+This confirmed the activity as a simulated DDoS/flooding scenario rather than normal user traffic.
+
+Action Taken:
+Monitored incoming traffic to confirm persistence of attack pattern
+Identified source IP(s) generating excessive requests
+Applied temporary blocking (if configured) or noted mitigation steps
+Verified system stability after traffic normalization
+
+Impact:
+Temporary degradation in server performance
+Increased response latency
+No permanent damage or data loss observed
+
+Recovery:
+System performance returned to normal after stopping simulated traffic
+Logs verified no continued abnormal activity
+Monitoring continued for a defined period to ensure stability
+
+Lessons Learned:
+Threshold-based alerting is effective for detecting volumetric attacks
+Visualization dashboards help quickly identify traffic anomalies
+Basic rate-limiting and IP blocking can mitigate simple flooding attacks
+Need for advanced protections (e.g., WAF, load balancing) in real environments
