@@ -95,9 +95,282 @@ Feedback loop for tuning detection rules
 Common Challenges
 High data volume impacting processing and storage
 Inefficient rule tuning leading to excessive noise
+
+3. Log Management Fundamentals:
+
+   Log Lifecycle
+
+Log management follows a structured lifecycle to ensure data is usable, searchable, and actionable:
+
+Collection: Logs are gathered from diverse sources such as endpoints, servers, applications, and network devices using agents (e.g., Fluentd, Logstash).
+Normalization: Raw logs are transformed into standardized formats (e.g., JSON, CEF) to enable consistent parsing and correlation across systems.
+Storage: Logs are indexed and stored in centralized repositories (e.g., Elasticsearch) optimized for fast querying and retrieval.
+Retention: Policies define how long logs are stored based on compliance, forensic needs, and storage constraints.
+Analysis: Logs are queried and correlated to detect anomalies, investigate incidents, and support threat hunting.
+Common Log Types
+
+Understanding log sources is critical for visibility:
+
+Windows Event Logs: Security (login attempts, privilege changes), System, and Application logs.
+Syslog: Standard logging protocol for Linux systems, network devices, and firewalls.
+HTTP Server Logs: Web access logs (e.g., Apache, Nginx) capturing request details such as IP, URI, status codes, and user agents.
+Log Collection and Processing
+
+Efficient pipelines ensure logs are usable in real time:
+
+Fluentd / Logstash:
+Used for collecting, parsing, and forwarding logs. Fluentd is lightweight and flexible, while Logstash provides powerful filtering and transformation 
+capabilities.
+
+Normalization Standards:
+Converting logs into structured formats (JSON, CEF) ensures compatibility with SIEM systems and enables field-based querying.
+Querying Mechanisms:
+SQL-like query languages such as KQL (Kibana Query Language) allow filtering, aggregation, and pattern detection across large datasets.
+Practical Workflow Implementation
+
+Log Collection Pipeline:
+Deploy Fluentd on an Ubuntu system.
+Configure input plugins (e.g., Syslog input).
+Generate test logs using system utilities.
+Forward logs to Elasticsearch and verify ingestion in Kibana.
+
+Querying and Detection:
+Use KQL queries to identify security-relevant events such as failed login attempts (e.g., Event ID 4625).
+Aggregate and analyze results to identify attack patterns like brute-force attempts.
+
+Normalization Process:
+Use Logstash pipelines to parse raw logs (e.g., Apache access logs).
+Apply filters (grok, mutate) to extract structured fields.
+Output normalized logs in JSON format for indexing and analysis.
+
+Log Analysis Workflow:
+Log generation from systems and applications
+Collection via agents (Fluentd/Logstash)
+Parsing and normalization
+Forwarding to SIEM (Elasticsearch)
+Indexing and storage
+Querying and visualization (Kibana)
+Detection and investigation
+
+Operational Challenges:
+Handling high log volume and storage costs
+Parsing inconsistencies across different log formats
+Time synchronization issues affecting correlation
+Data loss due to misconfigured pipelines
 Lack of contextual enrichment in alerts
 Limited visibility in encrypted traffic
-Outcome
 
+4. Security Tools Overview:
+   Core Security Tools and Functions
+
+Security operations rely on a layered tooling ecosystem where each component provides visibility and control over different attack surfaces:
+
+SIEM (Security Information and Event Management)
+Platforms such as Splunk and QRadar aggregate logs, perform correlation, and generate alerts. They act as the central analysis layer for SOC operations.
+EDR (Endpoint Detection and Response)
+Tools like CrowdStrike provide endpoint-level telemetry, detecting malicious processes, persistence mechanisms, and behavioral anomalies.
+IDS/IPS (Intrusion Detection/Prevention Systems)
+Snort operates as a signature-based detection engine that inspects network traffic and triggers alerts or blocks malicious activity based on defined rules.
+Vulnerability Scanners
+Nessus identifies security weaknesses in systems by scanning for known vulnerabilities, misconfigurations, and outdated software.
+
+Tool Integration Perspective:
+
+These tools are not isolated; they form an interconnected detection ecosystem:
+
+IDS/IPS generates network alerts → forwarded to SIEM
+EDR provides endpoint telemetry → correlated in SIEM
+Vulnerability data enriches alerts with risk context
+SIEM acts as the centralized decision-making layer
+
+Practical Implementation Approach:
+SIEM and XDR Setup
+Deploy free-tier SIEM solutions (Splunk Free, Elastic SIEM) or open-source XDR (Wazuh).
+Configure log ingestion from endpoints and network sources.
+Validate alert generation and dashboard visibility.
+
+Snort Configuration and Testing:
+Install Snort on Ubuntu and configure rule sets.
+Write custom rules to detect specific traffic patterns (e.g., HTTP requests to suspicious domains).
+Validate detection using controlled traffic generation.
+
+Vulnerability Assessment:
+Deploy a vulnerable VM (e.g., Metasploitable2).
+Run Nessus Essentials scans against the target.
+Analyze results based on CVSS scores and identify critical risks.
+
+Endpoint Monitoring with Osquery:
+Install Osquery on a Windows VM.
+Execute SQL-based queries to monitor system state (e.g., running processes).
+Simulate suspicious activity to validate detection capability.
+
+Detection Workflow Across Tools:
+Network traffic inspected by Snort (IDS/IPS)
+Endpoint activity monitored by EDR/Osquery
+Logs forwarded to SIEM for aggregation
+Correlation rules generate alerts
+Alerts enriched with vulnerability context (Nessus)
+Analyst investigates and responds
+
+Operational Challenges:
+Tool integration complexity and data normalization issues
+Signature-based detection limitations (Snort evasion techniques)
+High volume of vulnerability scan results requiring prioritization
+Endpoint telemetry noise and false positives
+
+5. Basic Security Concepts:
+   CIA Triad
+
+The CIA triad defines the foundational principles of information security:
+
+Confidentiality: Ensures that sensitive information is accessible only to authorized entities. Enforced through encryption, access controls, and authentication mechanisms.
+Integrity: Guarantees that data remains accurate and unaltered unless modified by authorized processes. Achieved באמצעות hashing, checksums, and digital signatures.
+Availability: Ensures systems and data are accessible when required. Maintained through redundancy, failover mechanisms, and protection against DoS attacks.
+
+These principles must be balanced; strengthening one dimension (e.g., strict access control) should not critically degrade another (e.g., availability).
+
+Threat, Vulnerability, and Risk
+
+These terms are often conflated but have distinct meanings in risk assessment:
+
+Threat: Any potential actor or event capable of exploiting a system (e.g., attacker, malware, insider).
+Vulnerability: A weakness or flaw in a system (e.g., unpatched software, misconfiguration).
+Risk: The potential impact resulting from a threat exploiting a vulnerability.
+
+Relationship:
+Risk exists only when a threat can exploit a vulnerability. Without either component, risk is minimized.
+
+Defense-in-Depth:
+
+Defense-in-depth is a layered security strategy where multiple controls are deployed across different layers:
+
+Network security (firewalls, IDS/IPS)
+Endpoint protection (EDR, hardening)
+Application security (secure coding, WAF)
+Identity and access controls (MFA, RBAC)
+
+The objective is to ensure that failure of one control does not result in total compromise.
+
+Zero Trust Model:
+
+Zero Trust operates on the principle of “never trust, always verify”:
+
+Continuous authentication and authorization
+Least privilege access enforcement
+Micro-segmentation of networks
+Context-aware access decisions (device, location, behavior)
+
+It eliminates implicit trust within internal networks and assumes breach as a baseline condition.
+
+Learning Approach:
 A well-functioning SOC improves threat visibility, reduces incident response time (MTTR), and strengthens overall organizational resilience against cyber threats.
 
+6. Security Operations Workflow:
+
+   Detection
+
+Security events are generated through SIEM, EDR, IDS/IPS, and other monitoring tools. Alerts are based on signatures, behavioral analytics, or anomaly detection.
+
+Triage
+
+Alerts are prioritized based on severity, confidence level, and potential impact. False positives are filtered out, and genuine threats are escalated.
+
+Investigation
+
+Analysts perform deep analysis by correlating logs, examining indicators of compromise (IOCs), and reconstructing attack timelines. Threat hunting techniques may be applied to identify hidden activity.
+
+Response
+
+Actions are taken to contain and eradicate threats:
+
+Isolating compromised systems
+Blocking malicious IPs/domains
+Removing persistence mechanisms
+Restoring affected systems
+
+Workflow Execution:
+
+Simulation Platforms:
+Tools like TheHive enable case management, incident tracking, and response orchestration.
+
+Phishing Incident Flowchart:
+
+A structured workflow should include:
+Email reported by user
+Header and link analysis
+Domain/IP reputation check
+Attachment sandboxing
+User impact assessment
+Containment (block sender, reset credentials)
+Awareness and reporting
+
+7. Incident Response Basics:
+   Incident Response Lifecycle
+
+The incident response (IR) lifecycle provides a structured methodology for handling security incidents with minimal impact and controlled recovery:
+
+Preparation:
+Establish policies, response plans, tooling, and team readiness. This includes playbooks, communication plans, asset inventories, and logging configurations.
+
+Identification:
+Detect and confirm incidents using alerts from SIEM, EDR, IDS/IPS, or user reports. Analysts validate whether an event qualifies as a security incident and determine its scope.
+
+Containment:
+Limit the spread and impact of the incident. Actions include isolating affected systems, blocking malicious IPs/domains, and disabling compromised accounts.
+Short-term containment: Immediate isolation
+Long-term containment: Temporary fixes while maintaining operations
+
+Eradication:
+Remove the root cause of the incident. This involves deleting malware, closing vulnerabilities, removing persistence mechanisms, and applying patches.
+
+Recovery:
+Restore systems to normal operation while ensuring they are clean and secure. Systems are monitored for any signs of reinfection before being fully reintegrated.
+
+Lessons Learned:
+Conduct post-incident analysis to identify gaps in detection, response, and prevention. Update playbooks, detection rules, and controls accordingly.
+
+Framework Alignment:
+NIST SP 800-61 provides standardized guidelines for incident handling, ensuring consistency, repeatability, and compliance with best practices.
+Emphasizes documentation, communication, and continuous improvement across all IR phases.
+
+Practical Implementation Approach:
+
+    Tabletop Exercises:
+Simulate incidents such as ransomware attacks to test response readiness. This includes decision-making, communication flow, and escalation paths without impacting production systems.
+
+    Scenario Simulation:
+Example: Ransomware scenario
+Detection via abnormal file encryption activity
+Isolation of infected host
+Identification of infection vector
+Removal of malicious binaries
+Restoration from backups
+
+8. Documentation Standards:
+
+   Types of Security Documentation
+Incident Reports:
+Detailed records of security incidents including timeline, affected assets, root cause, actions taken, and impact assessment.
+
+Runbooks:
+Step-by-step procedures for handling specific incident types (e.g., phishing, malware infection, brute-force attack).
+
+Standard Operating Procedures (SOPs):
+Defined processes for routine SOC activities such as alert triage, escalation, and reporting.
+
+Post-Mortem Reports:
+Analytical documents created after incident resolution, focusing on lessons learned and improvement areas.
+
+Documentation Best Practices:
+Maintain consistency using standardized templates
+Ensure accuracy and timestamped records
+Include technical evidence (logs, alerts, indicators)
+Keep documentation clear and reproducible for future incidents
+
+Practical Documentation Workflow:
+Capture initial alert details (source, severity, timestamp)
+Record investigation steps and findings
+Document containment and eradication actions
+Log recovery steps and validation
+Summarize root cause and lessons learned
+Update runbooks and detection rules
