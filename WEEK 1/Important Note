@@ -1,0 +1,9 @@
+### Note on Environment Limitations
+
+Due to hardware and device constraints, not all practical tasks could be executed completely in the lab environment. The system specifications resulted in 
+performance issues while running multiple virtual machines and security tools simultaneously, which affected smooth execution of some activities.
+
+Specifically, the installation and configuration of Wazuh could not be completed as intended due to these limitations. However, the remaining tasks were performed 
+successfully within the available resources, and all feasible practical components were implemented and documented.
+
+Wazuh setup and additional advanced configurations are planned to be completed once a more stable environment with sufficient system resources is available.
